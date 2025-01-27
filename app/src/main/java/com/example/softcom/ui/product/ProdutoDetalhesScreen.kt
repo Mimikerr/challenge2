@@ -47,6 +47,8 @@ fun ProductDetailsScreen(
 
         var quantidade by remember { mutableStateOf(1) }
 
+        var observacao by remember { mutableStateOf("") }
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -117,6 +119,29 @@ fun ProductDetailsScreen(
                     color = Color.Gray
                 )
 
+                Text(
+                    text = "Observações:",
+                    style = MaterialTheme.typography.subtitle1,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                TextField(
+                    value = observacao, // Estado mutável vinculado
+                    onValueChange = { observacao = it },
+                    placeholder = { Text("Digite suas observações aqui...") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(100.dp)
+                        .background(Color(0xFFF5F5F5), shape = MaterialTheme.shapes.medium),
+                    colors = TextFieldDefaults.textFieldColors(
+                        backgroundColor = Color.Transparent,
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        textColor = Color.Black
+                    )
+                )
+
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Row(
@@ -167,7 +192,7 @@ fun ProductDetailsScreen(
                         )
                     }
 
-                    Spacer(modifier = Modifier.width(16.dp))
+                    Spacer(modifier = Modifier.width(1.dp))
 
                     Button(
                         onClick = {
@@ -179,7 +204,8 @@ fun ProductDetailsScreen(
                                 snackbarHostState.showSnackbar("Adicionado ao carrinho com sucesso!")
                             }
                         },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFFF6600))
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFFF6600)),
+                        modifier = Modifier.weight(1f)
                     ) {
                         Text(text = "Adicionar", color = Color.White)
                     }

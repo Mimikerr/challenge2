@@ -3,6 +3,7 @@ package com.example.softcom.ui.home
 import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -273,6 +274,8 @@ fun ProdutoCard(
                     contentDescription = produto.nome,
                     modifier = Modifier
                         .size(200.dp)
+                        .border(1.dp, Color.Gray, shape = MaterialTheme.shapes.small)
+                        .padding(4.dp)
                         .align(Alignment.Center)
                 )
             }
